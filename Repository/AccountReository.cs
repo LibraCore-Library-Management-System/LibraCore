@@ -26,6 +26,7 @@ namespace LiberaryManagmentSystem.Repository
                 FirstName = registerDto.FirstName.Trim(),
                 LastName = registerDto.LastName.Trim(),
                 MembershipDate = registerDto.MembershipDate,
+                PasswordHash = userManager.PasswordHasher.HashPassword(null, registerDto.Password)
             };
             var result = await userManager.CreateAsync(newUser, registerDto.Password);
             return result;

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\azazk\\Downloads\\Telegram Desktop\\LiberaryManagmentSystem\\LiberaryManagmentSystem\\LiberaryManagmentSystem.csproj": {}
+    "G:\\GP_DEPI\\LiberaryManagmentSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\azazk\\Downloads\\Telegram Desktop\\LiberaryManagmentSystem\\LiberaryManagmentSystem\\LiberaryManagmentSystem.csproj": {
+    "G:\\GP_DEPI\\LiberaryManagmentSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azazk\\Downloads\\Telegram Desktop\\LiberaryManagmentSystem\\LiberaryManagmentSystem\\LiberaryManagmentSystem.csproj",
+        "projectUniqueName": "G:\\GP_DEPI\\LiberaryManagmentSystem.csproj",
         "projectName": "LiberaryManagmentSystem",
-        "projectPath": "C:\\Users\\azazk\\Downloads\\Telegram Desktop\\LiberaryManagmentSystem\\LiberaryManagmentSystem\\LiberaryManagmentSystem.csproj",
-        "packagesPath": "C:\\Users\\azazk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azazk\\Downloads\\Telegram Desktop\\LiberaryManagmentSystem\\LiberaryManagmentSystem\\obj\\",
+        "projectPath": "G:\\GP_DEPI\\LiberaryManagmentSystem.csproj",
+        "packagesPath": "C:\\Users\\Youssef\\.nuget\\packages\\",
+        "outputPath": "G:\\GP_DEPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\azazk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Youssef\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -105,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

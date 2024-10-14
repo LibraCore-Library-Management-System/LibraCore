@@ -4,22 +4,32 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Login</h2>
+<!-- Alert notification for success Register -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        You have registered successfully! Please <strong>login.</strong>
+
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<h2 class="text-center mt-4">Login</h2> 
 
 <form asp-action="Login" method="post" class="mt-4">
-    <div class="form-group">
-        <label asp-for="Email" class="control-label">Email</label>
-        <input asp-for="Email" class="form-control" type="email" />
+    <div class="form-floating mb-3">
+        <input asp-for="Email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
+        <label asp-for="Email" for="floatingInput">Email address</label>
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        <label asp-for="Password" class="control-label">Password</label>
-        <input asp-for="Password" class="form-control" type="password" />
+    <div class="form-floating mb-3">
+        <input asp-for="Password" type="password" class="form-control" id="floatingPassword" placeholder="Password" required autocomplete="off">
+        <label asp-for="Password" for="floatingPassword">Password</label>
         <span asp-validation-for="Password" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-3">Login</button>
+    <button type="submit" class="btn btn-lg btn-primary mt-3">Login</button>
 </form>
 
 @section Scripts {

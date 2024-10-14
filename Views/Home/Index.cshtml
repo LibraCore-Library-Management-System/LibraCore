@@ -1,5 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<!-- Empty content as requested -->
+@{
+    ViewData["Title"] = "Home";
+}
+
+@if (TempData["Logout"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        You have logged out successfully!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="text-center">
+        <h1>Welcome to LibraCore</h1>
+        <p>Your ultimate library management system.</p>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a href="/book" class="btn btn-primary btn-lg mt-4">View Books</a>
+        }
+        else
+        {
+            <a href="/Account/Login" class="btn btn-primary btn-lg mt-4">Log In</a>
+            <a href="/Account/Register" class="btn btn-secondary btn-lg mt-4 ms-2">Register</a>
+        }
+    </div>
+</div>

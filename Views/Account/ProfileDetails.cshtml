@@ -1,42 +1,54 @@
 ﻿@model ProfileDetailsViewModel
 
-<h2>Your Profile</h2>
+@{
+    ViewBag.Title = "Your Profile";
+}
 
-<div class="form-group">
-    <label>First Name</label>
-    <input class="form-control" asp-for="FirstName" readonly />
-</div>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Your Profile</h2>
 
-<div class="form-group">
-    <label>Last Name</label>
-    <input class="form-control" asp-for="LastName" readonly />
-</div>
+    <div class="card shadow-sm border-light">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Profile Information</h5>
+        </div>
+        <div class="card-body">
+            <div class="form-group mb-3">
+                <label asp-for="FirstName" class="form-label">First Name</label>
+                <input class="form-control" asp-for="FirstName" readonly />
+            </div>
 
-<div class="form-group">
-    <label>Email</label>
-    <input class="form-control" asp-for="Email" readonly />
-</div>
+            <div class="form-group mb-3">
+                <label asp-for="LastName" class="form-label">Last Name</label>
+                <input class="form-control" asp-for="LastName" readonly />
+            </div>
 
-<div class="form-group">
-    <label>Membership Date</label>
-    <input class="form-control" asp-for="MembershipDate" readonly />
-</div>
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input class="form-control" asp-for="Email" type="email" readonly />
+            </div>
 
-<div class="form-group">
-    <label>Password</label>
-    <div class="input-group">
-        <input type="password" class="form-control" id="passwordField" value="********" readonly />
-        <div class="input-group-append">
-            <button class="btn btn-secondary" type="button" onclick="togglePasswordVisibility()">Show</button>
+            <div class="form-group mb-3">
+                <label asp-for="MembershipDate" class="form-label">Membership Date</label>
+                <input class="form-control" asp-for="MembershipDate" readonly />
+            </div>
+
+            <div class="form-group mb-4">
+                <label for="passwordField" class="form-label">Password</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="passwordField" value="********" readonly />
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button" onclick="togglePasswordVisibility()">Show</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a class="btn btn-primary" asp-action="ChangePassword">Change Password</a>
+                <a class="btn btn-primary" asp-action="UpdateProfile">Edit Profile</a>
+            </div>
         </div>
     </div>
 </div>
-
-<div class="form-group">
-    <a class="btn btn-primary" asp-action="ChangePassword">Change Password</a>
-</div>
-
-<a class="btn btn-primary" asp-action="UpdateProfile">Edit Profile</a>
 
 @section Scripts {
     <script>
@@ -45,10 +57,10 @@
             var button = event.target;
 
             if (passwordField.type === 'password') {
-                passwordField.type = 'text';  // Change the input type to text to show the password
+                passwordField.type = 'text';  // Show password
                 button.textContent = 'Hide';  // Change button text to 'Hide'
             } else {
-                passwordField.type = 'password';  // Change the input type back to password to hide it
+                passwordField.type = 'password';  // Hide password
                 button.textContent = 'Show';  // Change button text to 'Show'
             }
         }

@@ -1,57 +1,56 @@
 ﻿@model LiberaryManagmentSystem.Models.Book
 
 @{
-    ViewBag.Title = "Book Details";
+    ViewData["Title"] = "Book Details";
     var minReturnDate = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd"); // Set minimum date to 1 day in the future
 }
 
-<h2>@Model.Title</h2>
+<div class="container mt-4">
+    <h2 class="text-center mb-4">@Model.Title</h2>
 
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert alert-warning">
-        @TempData["ErrorMessage"]
+    <!-- Alert notification for error messages -->
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-warning text-center">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Author: <strong>@Model.Author</strong></li>
+                <li class="list-group-item">Genre: <strong>@Model.Genre</strong></li>
+                <li class="list-group-item">Published Date: <strong>@Model.PublishedDate.ToShortDateString()</strong></li>
+                <li class="list-group-item">Copies Available: <strong>@Model.CopiesAvailable</strong></li>
+            </ul>
+        </div>
     </div>
-}
-
-<div>
-    <h4>Book Information</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">Author</dt>
-        <dd class="col-sm-10">@Model.Author</dd>
-
-        <dt class="col-sm-2">Genre</dt>
-        <dd class="col-sm-10">@Model.Genre</dd>
-
-        <dt class="col-sm-2">Published Date</dt>
-        <dd class="col-sm-10">@Model.PublishedDate.ToShortDateString()</dd>
-
-        <dt class="col-sm-2">Copies Available</dt>
-        <dd class="col-sm-10">@Model.CopiesAvailable</dd>
-    </dl>
 
     @if (Model.CopiesAvailable > 0)
     {
-        <h4>Checkout Book</h4>
+        <h4 class="text-center mb-3">Checkout Book</h4>
         <hr />
-        <form asp-controller="Checkout" asp-action="Checkout" method="post">
+        <form asp-controller="Checkout" asp-action="Checkout" method="post" class="mb-4">
             <input type="hidden" name="bookId" value="@Model.BookId" />
             <div class="form-group">
                 <label for="returnDate">Return Date</label>
                 <input type="date" name="returnDate" class="form-control" min="@minReturnDate" required />
             </div>
-            <button type="submit" class="btn btn-primary">Checkout</button>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Checkout</button>
+            </div>
         </form>
     }
     else
     {
-        <div class="alert alert-danger">
+        <div class="alert alert-danger text-center">
             No copies available for this book.
         </div>
     }
 
-    <div>
+    <div class="text-center mt-4">
         @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
         {
             <a asp-action="Edit" asp-route-id="@Model.BookId" class="btn btn-primary">Edit</a>
