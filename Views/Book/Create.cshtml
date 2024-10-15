@@ -4,33 +4,55 @@
     ViewData["Title"] = "Create Book";
 }
 
-<h2>Create Book</h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Create a New Book</h2>
 
-<form asp-action="Create">
-    <div class="form-group">
-        <label asp-for="Title" class="control-label"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Author" class="control-label"></label>
-        <input asp-for="Author" class="form-control" />
-        <span asp-validation-for="Author" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Genre" class="control-label"></label>
-        <input asp-for="Genre" class="form-control" />
-        <span asp-validation-for="Genre" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="PublishedDate" class="control-label"></label>
-        <input asp-for="PublishedDate" class="form-control" type="date" />
-        <span asp-validation-for="PublishedDate" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="CopiesAvailable" class="control-label"></label>
-        <input asp-for="CopiesAvailable" class="form-control" />
-        <span asp-validation-for="CopiesAvailable" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-</form>
+    <form asp-action="Create">
+        <div class="form-group">
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" placeholder="Enter the book title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Author" class="control-label"></label>
+            <input asp-for="Author" class="form-control" placeholder="Enter the author's name" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Genre" class="control-label"></label>
+            <input asp-for="Genre" class="form-control" placeholder="Enter the genre" />
+            <span asp-validation-for="Genre" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PublishedDate" class="control-label"></label>
+            <input asp-for="PublishedDate" class="form-control" type="date" />
+            <span asp-validation-for="PublishedDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CopiesAvailable" class="control-label"></label>
+            <input asp-for="CopiesAvailable" class="form-control" placeholder="Enter number of copies available" />
+            <span asp-validation-for="CopiesAvailable" class="text-danger"></span>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a asp-action="Index" class="btn btn-secondary ml-2">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+</style>

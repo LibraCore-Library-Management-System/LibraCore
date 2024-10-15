@@ -4,54 +4,51 @@
     ViewData["Title"] = "Books List";
 }
 
-<h2>Books List</h2>
+<!-- Alert notification for successful login -->
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Genre</th>
-            <th>Published Date</th>
-            <th>Copies Available</th>
-            @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
-            {
-                <th>Actions</th>
-            }
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var book in Model)
-        {
-            <tr>
-                <td>@book.Title</td>
-                <td>@book.Author</td>
-                <td>@book.Genre</td>
-                <td>@book.PublishedDate.ToShortDateString()</td>
-                <td>@book.CopiesAvailable</td>
-                @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
-                {
-                    <td>
-                        <a asp-action="BookDetails" asp-route-id="@book.BookId" class="btn btn-sm btn-info">View</a>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+        You have logged in successfully! <strong>Welcome.</strong>
 
-                        <a asp-action="Edit" asp-route-id="@book.BookId" class="btn btn-sm btn-warning">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@book.BookId" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        <a asp-action="BookDetails" asp-route-id="@book.BookId" class="btn btn-sm btn-info">View</a>
-                    </td>
-                }
-            </tr>
-        }
-    </tbody>
-</table>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<h2 class="text-center my-4">Books List</h2>
 
 @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
 {
-    <p>
-        <a asp-action="Create" class="btn btn-primary">Add New Book</a>
-    </p>
+    <div class="text-end mb-3">
+        <a asp-action="Create" class="btn btn-primary btn-lg">Add New Book</a>
+    </div>
 }
+
+<div class="container">
+    <div class="row">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@book.Title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">by @book.Author</h6>
+                        <p class="card-text">Genre: @book.Genre</p>
+                        <p class="card-text">Published: @book.PublishedDate.ToShortDateString()</p>
+                        <p class="card-text">Available Copies: @book.CopiesAvailable</p>
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="BookDetails" asp-route-id="@book.BookId" class="btn btn-outline-info">View</a>
+                            @if (User.IsInRole("Admin") || User.IsInRole("Librarian"))
+                            {
+                                <div>
+                                    <a asp-action="Edit" asp-route-id="@book.BookId" class="btn btn-outline-warning">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@book.BookId" class="btn btn-outline-danger">Delete</a>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

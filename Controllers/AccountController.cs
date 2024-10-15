@@ -32,6 +32,9 @@ public class AccountController(IUserService userService) : Controller
             return View(registerDto);
         }
 
+        // Store success message in TempData
+        TempData["SuccessMessage"] = "You have registered successfully! Please login.";
+
         return RedirectToAction("Login", "Account");
     }
 
@@ -72,7 +75,9 @@ public class AccountController(IUserService userService) : Controller
             return View(loginDto);
         }
 
-        return RedirectToAction("Index", "Home");
+        TempData["SuccessMessage"] = "You have logged in successfully! Welcome";
+
+        return RedirectToAction("Index", "Book");
     }
 
     /// <summary>
@@ -100,7 +105,8 @@ public class AccountController(IUserService userService) : Controller
     public async Task<IActionResult> Logout()
     {
         await userService.LogoutUser();
-        return RedirectToAction("Login", "Account");
+        TempData["Logout"] = "You have logged out successfully!";
+        return RedirectToAction("Index", "Home");
     }
 
     /// <summary>
